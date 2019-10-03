@@ -1,0 +1,4 @@
+#Fri Mar 15 17:12:38 EET 2019
+base.0=/home/marinos/PycharmProjects/thesis/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex
