@@ -41,12 +41,7 @@ html, body { width:100%;padding:0;margin:0; }
 
 
 
-<b>Address Lookup</b>
-<div id="search">
-<input type="text" name="addr" value="" id="addr" size="58" />
-<button type="button" onclick="addr_search();">Search</button>
-<div id="results"></div>
-</div>
+<b>Χάρτης</b>
 
 <br />
 
@@ -148,7 +143,7 @@ function myFunction(arr)
  }
 
 }
-
+	var marker = L.marker([51.5, -0.09]).addTo(mymap);
 function addr_search()
 {
  var inp = document.getElementById("addr");
