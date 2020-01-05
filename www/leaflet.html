@@ -182,17 +182,20 @@ $('#address').submit(function(e) {
                     $.ajax({
                         type: 'POST',
                         url: 'http://127.0.0.1:5000/map',
+						headers: {"Authorization":'Bearer'+' ' +localStorage.getItem('token')},
 						crossDomain: true,
 						dataType: 'json',
 						contentType: 'application/json; charset=utf-8',
 						data: JSON.stringify(data),
 						context: Form,
 						success: function (response) {
-							var resp = JSON.parse(response)
+							var resp = JSON.parse(response);
 							alert(resp.status);
 						},
 						error: function (xhr, status) {
-							alert("error");
+							if(xhr.status==401){
+								window.location.replace("index.html");
+							}
 						}
                        /* success: function(callback) {
 				if(callback.lat!=""||callback.lon!=""){
