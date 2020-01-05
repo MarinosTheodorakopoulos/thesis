@@ -240,6 +240,7 @@
         }
 
     });
+
 $('#signUp').submit(function(e) {
                     e.preventDefault();
 
@@ -264,9 +265,9 @@ $('#signUp').submit(function(e) {
 				if(callback.fname==""||callback.lname=="")
 					myfunction();
 				else{
-
+                    localStorage.setItem('token', callback.token);
                             // Watch out for Cross Site Scripting security issues when setting dynamic content!
-                            	$(this).text('Hello ' + callback.fname + ' ' + callback.lname  );
+                            	$(this).text('Hello ');
 				window.location.replace("leaflet.html");
 				}
                         },
