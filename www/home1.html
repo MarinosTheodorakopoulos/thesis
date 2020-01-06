@@ -13,19 +13,19 @@
   <div class="wrapper">
     <h1>Menu</h1>
     <a class="menu-btn" onclick="toggleMenu()"></a>
-    <section id="page1" class="one" onclick="goToPage(0)">
+    <section id="page1" class="one" onclick="goToPage(0,0)">
       <h1>Προφίλ</h1>
       <iframe id="page_0" class="one"></iframe>
     </section>
-    <section id="page2" class="two" onclick="goToPage(1)">
+    <section id="page2" class="two" onclick="goToPage(1,0)">
       <h1>Καταχώρησε Φαγητό</h1>
       <iframe id="page_1" class="one"></iframe>
     </section>
-    <section class="three" onclick="goToPage(2)">
+    <section class="three" onclick="goToPage(2,0)">
       <h1>Ιστορικό</h1>
       <iframe id="page_2" class="one"></iframe>
     </section>
-    <section class="four" onclick="goToPage(3)">
+    <section class="four" onclick="goToPage(3,0)">
       <h1>Επιβράβευση</h1>
       <iframe id="page_3" class="one"></iframe>
     </section>
@@ -34,10 +34,7 @@
   <!--===============================================================================================-->
   <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
   <script src="js/router/router.js"></script>
-
-  <script crossorigin="use-credentials">
-
-  </script>
+  <script src="js/http-handlers/query-handler.js"></script>
 </body>
 
 </html>

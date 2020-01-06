@@ -1,12 +1,17 @@
 
 
-var pages = new Array('profile.html', 'transaction.html', 'profil.html', 'profil.html');
+var pages =
+    new Array(
+        new Array('profile.html', 'insertPortion.html', 'profil.html', 'profil.html'),
+        new Array('profile.html', 'portionsList.html', 'historyList.html', 'profil.html'));
+
+
 
 function toggleMenu() {
     document.getElementsByClassName('wrapper')[0].classList.toggle('menu-open');
 }
 
-function goToPage(page) {
+function goToPage(page, usertype) {
     console.log(page);
     var wrapper = document.getElementsByClassName('wrapper')[0];
     var sections = document.getElementsByTagName('section');
@@ -17,9 +22,9 @@ function goToPage(page) {
         }
     }
     wrapper.classList.remove('menu-open', 'page-one', 'page-two');
-    console.log(pages[page]);
+    console.log(pages[usertype][page]);
     // wrapper.classList.add('page-' + pages[page]);
-    document.getElementById('page_' + page).src = pages[page];
+    document.getElementById('page_' + page).src = pages[usertype][page];
     // $("#page1").on("click", function (e) {
     //     console.log(e);
 
@@ -29,6 +34,12 @@ function goToPage(page) {
     // document.getElementById("profil").innerHTML = loadHome();
     // document.getElementById("transaction").innerHTML = loadTransaction();
 }
+
+
+$(document).ready(function () {
+    console.log('check auth...');
+    checkAuth();
+});
 
 
 
