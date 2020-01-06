@@ -106,12 +106,13 @@ $('#login').submit(function(e) {
 				if(callback.fname==""||callback.lname=="")
 					myfunction();
 				else{
-
+                                console.log('Success!')
+                                localStorage.setItem('token', callback.token);
                             // Watch out for Cross Site Scripting security issues when setting dynamic content!
-                            	$(this).text('Hello ' + callback.fname + ' ' + callback.lname  );
-                            	if(callback.cid==1)
+                            	$(this).text('Hello ' + callback.token + ' ' + callback.token  );
+                            	//if(callback.cid==1)
 				                    window.location.replace("home1.html");
-				                else
+				                //else
 				                    window.location.replace("home2.html");
 				}
                         },

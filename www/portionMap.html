@@ -41,12 +41,7 @@ html, body { width:100%;padding:0;margin:0; }
 
 
 
-<b>Address Lookup</b>
-<div id="search">
-<input type="text" name="addr" value="" id="addr" size="58" />
-<button type="button" onclick="addr_search();">Search</button>
-<div id="results"></div>
-</div>
+<b>Χάρτης</b>
 
 <br />
 
@@ -148,7 +143,7 @@ function myFunction(arr)
  }
 
 }
-
+	var marker = L.marker([51.5, -0.09]).addTo(mymap);
 function addr_search()
 {
  var inp = document.getElementById("addr");
@@ -168,41 +163,6 @@ function addr_search()
 
 (function ($) {
     "use strict";
-
-	$( document ).ready(function() {
-		console.log( "ready!" );
-		$.ajax({
-			type: 'POST',
-			url: 'http://127.0.0.1:5000/checkAuth',
-			headers: {"Authorization":'Bearer '+''+localStorage.getItem('token')},
-			crossDomain: true,
-			dataType: 'json',
-			contentType: 'application/json; charset=utf-8',
-			success: function (xhr, status) {
-				if(xhr.status==200){
-					console.log("ok");
-				}
-							},
-			error: function (xhr, status) {
-				if(xhr.status==401){
-					window.location.replace("index.html");
-				}
-			}
-			/* success: function(callback) {
-     if(callback.lat!=""||callback.lon!=""){
-         //myfunction();
-
-
-                 // Watch out for Cross Site Scripting security issues when setting dynamic content!
-                     $(this).text('Hello ' + callback.fname + ' ' + callback.lname  );
-     window.location.replace("leaflet.html");
-     }
-             },
-             error: function() {
-                 $(this).html("error!");
-             }*/
-		});
-	});
 $('#address').submit(function(e) {
                     e.preventDefault();
                     var data = {};
@@ -217,23 +177,17 @@ $('#address').submit(function(e) {
                     $.ajax({
                         type: 'POST',
                         url: 'http://127.0.0.1:5000/map',
-						headers: {"Authorization":'Bearer'+' ' +localStorage.getItem('token')},
 						crossDomain: true,
 						dataType: 'json',
 						contentType: 'application/json; charset=utf-8',
 						data: JSON.stringify(data),
 						context: Form,
 						success: function (response) {
-							if(response.cid==1){
-								window.location.replace("home1.html")
-							}else{
-								window.location.replace("home2.html")
-							}
+							var resp = JSON.parse(response)
+							alert(resp.status);
 						},
 						error: function (xhr, status) {
-							if(xhr.status==401){
-								window.location.replace("index.html");
-							}
+							alert("error");
 						}
                        /* success: function(callback) {
 				if(callback.lat!=""||callback.lon!=""){

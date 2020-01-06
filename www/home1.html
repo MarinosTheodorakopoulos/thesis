@@ -213,8 +213,8 @@ function goToPage(page) {
 
 $(function() {
   $("#page1").click(function() {
-     $("#profil").load("profil.html");
-     $("#import").load("css/profile.css");
+     $("#profil").load("profile.html");
+     //$("#import").load("css/profile.css");
   });
 });
 
@@ -232,7 +232,7 @@ async function fetchHtmlAsText(url) {
 // this is your `load_home() function`
 async function loadHome() {
     const contentDiv = document.getElementById("profil");
-    contentDiv.innerHTML = await fetchHtmlAsText("profil.html");
+    contentDiv.innerHTML = await fetchHtmlAsText("profile.html");
 }
 
 async function loadTransaction() {
