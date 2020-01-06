@@ -1,144 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-	<title>Transaction</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<!--<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>-->
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/transaction.css">
-<!--===============================================================================================-->
-	<style>
-	#snackbar {
-  visibility: hidden;
-  min-width: 250px;
-  margin-left: -125px;
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  border-radius: 2px;
-  padding: 16px;
-  position: fixed;
-  z-index: 1;
-  left: 50%;
-  bottom: 30px;
-  font-size: 17px;
-}
-
-#snackbar.show {
-  visibility: visible;
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
-}
-
-@-webkit-keyframes fadein {
-  from {bottom: 0; opacity: 0;} 
-  to {bottom: 30px; opacity: 1;}
-}
-
-@keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
-}
-
-@-webkit-keyframes fadeout {
-  from {bottom: 30px; opacity: 1;} 
-  to {bottom: 0; opacity: 0;}
-}
-
-@keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
-}
-	</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/Article-List.css">
+    <link rel="stylesheet" href="assets/css/star_votes.css">
 </head>
-<body>
-	
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<form  class="login100-form validate-form" name="insertFood" action="" method="post" id="insertFood">
-					<span class="login100-form-title p-b-26">
-						Εισαγωγή μερίδας
-					</span>
 
-						Αριθμός μερίδων<input class="input100" type="number" name="nofood" id="nofood" min="1" >
-
-
-						<select class="input100"  name="type" id="type">
-							<option value="Ιδιώτης">Ιδιώτης</option>
-							<option value="Κατάστημα">Κατάστημα</option>
-							<option value="Φορέας">Φορέας</option>
-						</select>
-
-
-
-					<div class="container-login100-form-btn">
-						<div class="wrap-login100-form-btn">
-							<div class="login100-form-bgbtn"></div>
-							<button type="submit" class="login100-form-btn">
-								Καταχώρηση
-							</button>
-						</div>
-					</div>
-
-
-
-				</form>
-				<div id="snackbar">Λάθος κωδικός ή email</div>
-			</div>
-		</div>
-	</div>
-	
-	<div id="dropDownSelect1"></div>
-  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-
-
-
-
-
-
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
-	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/countdowntime/countdowntime.js"></script>
-<!--===============================================================================================-->
-<script src="js/transaction.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
-
+<body class="d-lg-flex justify-content-lg-start" id="page-top">
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top d-flex align-items-start" id="mainNav">
+        <div class="container-fluid"><a class="navbar-brand js-scroll-trigger" href="#page-top">Συναλλαγή</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler float-right" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+            <div
+                class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="#download">Download</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="#features">Features</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+                </ul>
+        </div>
+        </div>
+    </nav>
+    <div class="container justify-content-start align-items-start flex-wrap">
+        <div class="row text-nowrap text-left d-flex flex-row justify-content-center align-items-center flex-wrap mt-auto justify-content-sm-start" style="margin-top: -50;">
+            <div class="col-md-12 text-center" style="padding: 15px;">
+                <div class="row" style="padding: 15;">
+                    <div class="col-md-12"><span>Στοιχεία Συναλλαγής</span></div>
+                </div>
+                <div class="row">
+                    <div class="col-auto col-md-12 offset-lg-0 d-inline-flex justify-content-start flex-wrap">
+                        <p class="text-break text-center d-flex flex-row flex-grow-0 justify-content-start align-items-start flex-wrap justify-content-lg-center align-items-lg-start" style="width: 386px;">When a column is selected, the Options &nbsp;panel reveals a large number of options that control the <strong>width</strong>, <strong>offset</strong> , <strong>alignment</strong> and <strong>order</strong> of columns.&nbsp;</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12"> <div class="star-rating">
+        <span class="fa fa-star-o" data-rating="1"></span>
+        <span class="fa fa-star-o" data-rating="2"></span>
+        <span class="fa fa-star-o" data-rating="3"></span>
+        <span class="fa fa-star-o" data-rating="4"></span>
+        <span class="fa fa-star-o" data-rating="5"></span>
+        <input type="hidden" name="whatever1" class="rating-value" value="2.56">
+</div></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-left">
+                        <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Χαλασμένο Φαγητό</label></div>
+                        <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Δεν βρέθηκε</label></div>
+                        <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Αγενής</label></div>
+                        <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Άλλος λόγος</label></div>
+                        <div class="row text-center">
+                            <div class="col text-center"><textarea class="form-control-lg d-flex justify-content-center"></textarea></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="padding: 15;">
+                    <div class="col-md-12"><button class="btn btn-primary" type="button">Αναφορα</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/history_list_query.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="assets/js/new-age.js"></script>
+    <script src="assets/js/stars_vote.js"></script>
 </body>
-</html>
 
+</html>
