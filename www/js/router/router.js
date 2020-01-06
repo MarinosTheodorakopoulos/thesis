@@ -1,6 +1,6 @@
 
 
-var pages = new Array('profile.html', 'leaflet.html', 'profil.html', 'profil.html');
+var pages = new Array('profile.html', 'transaction.html', 'profil.html', 'profil.html');
 
 function toggleMenu() {
     document.getElementsByClassName('wrapper')[0].classList.toggle('menu-open');
