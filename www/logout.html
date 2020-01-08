@@ -24,8 +24,8 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="../../css/util.css">
-    <link rel="stylesheet" type="text/css" href="../../css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <!--===============================================================================================-->
 
     <style>
@@ -106,51 +106,19 @@
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
-                <form class="login100-form validate-form" id="signUp">
+                <form class="login100-form validate-form" id="profile">
                     <span class="login100-form-title p-b-26">
-                        Εγγραφή Νέου Χρήστη
+                        Αποσύνδεση από την εφαρμογή
                     </span>
-
-
-                    <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
-                        <input class="input100" type="text" name="email">
-                        <span class="focus-input100" data-placeholder="Email"></span>
-                    </div>
-                    <div class="wrap-input100 validate-input" data-validate="Enter password">
-                        <span class="btn-show-pass">
-                            <i class="zmdi zmdi-eye"></i>
-                        </span>
-                        <input class="input100" type="password" name="pass">
-                        <span class="focus-input100" data-placeholder="Password"></span>
-                    </div>
-                    <div class="wrap-input100 validate-input">
-                        <input class="input100" type="text" name="firstName">
-                        <span class="focus-input100" data-placeholder="FirstName"></span>
-                    </div>
-                    <div class="wrap-input100 validate-input">
-                        <input class="input100" type="text" name="lastName">
-                        <span class="focus-input100" data-placeholder="LastName"></span>
-                    </div>
-
-                    <div class="wrap-input100 validate-input">
-                        <input class="input100" type="radio" name="type" value="1">
-                        <span class="focus-input100" data-placeholder="give food"></span>
-                    </div>
-                    <div class="wrap-input100 validate-input">
-                        <input class="input100" type="radio" name="type" value="2">
-                        <span class="focus-input100" data-placeholder="take food"></span>
-                    </div>
-
 
 
                     <div class="container-login100-form-btn">
                         <div class="wrap-login100-form-btn">
                             <div class="login100-form-bgbtn"></div>
                             <button class="login100-form-btn">
-                                Sign up
+                                Έξοδος
                             </button>
                         </div>
-                        <div id="snackbar">Ο χρήστης υπάρχει ήδη</div>
                     </div>
 
 
@@ -270,8 +238,51 @@
                 }
 
             });
-
-            $('#signUp').submit(function (e) {
+            $("#changeAddress").click(function () {
+                window.location.replace("leaflet.html");
+            });
+            $(document).ready(function () {
+                console.log("ready!");
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://127.0.0.1:5000/showUser',
+                    headers: { "Authorization": 'Bearer ' + '' + localStorage.getItem('token') },
+                    crossDomain: true,
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (response) {
+                        var email = response.email;
+                        var password = response.password;
+                        var fname = response.fname;
+                        var lname = response.lname;
+                        var cid = response.cid;
+                        window.document.getElementById('email').value = email;
+                        window.document.getElementById('pass').value = password;
+                        window.document.getElementById('firstName').value = fname;
+                        window.document.getElementById('lastName').value = lname;
+                        window.document.getElementById('type').value = cid;
+                    },
+                    error: function (xhr, status) {
+                        if (xhr.status == 401) {
+                            window.location.replace("index.html");
+                        }
+                    }
+                    /* success: function(callback) {
+             if(callback.lat!=""||callback.lon!=""){
+                 //myfunction();
+        
+        
+                         // Watch out for Cross Site Scripting security issues when setting dynamic content!
+                             $(this).text('Hello ' + callback.fname + ' ' + callback.lname  );
+             window.location.replace("leaflet.html");
+             }
+                     },
+                     error: function() {
+                         $(this).html("error!");
+                     }*/
+                });
+            });
+            $('#profile').submit(function (e) {
                 e.preventDefault();
 
                 var data = {};
@@ -285,20 +296,27 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: 'http://127.0.0.1:5000/signUp',
+                    url: 'http://127.0.0.1:5000/edit',
+                    headers: { "Authorization": 'Bearer ' + '' + localStorage.getItem('token') },
                     crossDomain: true,
                     dataType: 'json',
                     contentType: 'application/json; charset=utf-8',
                     data: JSON.stringify(data),
                     context: Form,
                     success: function (callback) {
-                        if (callback.fname == "" || callback.lname == "")
+                        if (callback.cid == "")
                             myfunction();
                         else {
-                            localStorage.setItem('token', callback.token);
-                            // Watch out for Cross Site Scripting security issues when setting dynamic content!
-                            $(this).text('Hello ');
-                            window.location.replace("leaflet.html");
+                            if (callback.cid == 1) {
+                                $(this).text('Τα στοιχεία άλλαξαν επιτυχώς');
+                                window.location.replace("home1.html");
+                            } else {
+
+
+                                // Watch out for Cross Site Scripting security issues when setting dynamic content!
+                                $(this).text('Τα στοιχεία άλλαξαν επιτυχώς');
+                                window.location.replace("home2.html");
+                            }
                         }
                     },
                     error: function () {
