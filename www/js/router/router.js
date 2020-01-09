@@ -2,8 +2,8 @@
 
 var pages =
     new Array(
-        new Array('profile.html', 'insertPortion.html', 'profil.html', 'profil.html'),
-        new Array('profile.html', 'portionsList.html', 'historyList.html', 'profil.html'));
+        new Array('profile.html', 'insertPortion.html', 'profil.html', 'logout.html'),
+        new Array('profile.html', 'portionsList.html', 'historyList.html', 'logout.html'));
 
 
 
@@ -35,11 +35,27 @@ function goToPage(page, usertype) {
     // document.getElementById("transaction").innerHTML = loadTransaction();
 }
 
+function loadVoteScreen() {
+    $('#page-history').html('<iframe id="hist-frame" style="height:100%; width:100%;" class="inner-iframe"></iframe>');
+    document.getElementById('hist-frame').src = 'transaction.html';
+}
+
+
+function goToSelectPortionPage(item) {
+    console.log(item);
+
+    // var page = buildPortionForm(element);
+    // $('#foodList').html('<div id="p-form" style="height:100%; width:100%;" class="inner-iframe"></div>');
+    // document.getElementById('p-form').html(page);
+}
+
 
 $(document).ready(function () {
     console.log('check auth...');
     checkAuth();
 });
+
+
 
 
 

@@ -83,9 +83,10 @@ html, body { width:100%;padding:0;margin:0; }
 <script type="text/javascript">
 	//self.send_header('Access-Control-Allow-Origin', '*');
 	//self.end_headers();
-// New York
-var startlat = 40.75637123;
-var startlon = -73.98545321;
+// New Yor
+	var lat,lon
+var startlat = lat;
+var startlon = lon;
 
 var options = {
  center: [startlat, startlon],
@@ -143,7 +144,7 @@ function myFunction(arr)
  }
 
 }
-	var marker = L.marker([51.5, -0.09]).addTo(mymap);
+var marker = L.marker([lat, lon]).addTo(mymap);
 function addr_search()
 {
  var inp = document.getElementById("addr");
@@ -163,49 +164,43 @@ function addr_search()
 
 (function ($) {
     "use strict";
-$('#address').submit(function(e) {
-                    e.preventDefault();
-                    var data = {};
-                    var Form = this;
-
-                    $.each(this.elements, function(i, v) {
-                        var input = $(v);
-                        data[input.attr("name")] = input.val();
-                        delete data["undefined"];
-                    });
-
-                    $.ajax({
-                        type: 'POST',
-                        url: 'http://127.0.0.1:5000/map',
-						crossDomain: true,
-						dataType: 'json',
-						contentType: 'application/json; charset=utf-8',
-						data: JSON.stringify(data),
-						context: Form,
-						success: function (response) {
-							var resp = JSON.parse(response)
-							alert(resp.status);
-						},
-						error: function (xhr, status) {
-							alert("error");
-						}
-                       /* success: function(callback) {
-				if(callback.lat!=""||callback.lon!=""){
-					//myfunction();
-
-
-                            // Watch out for Cross Site Scripting security issues when setting dynamic content!
-                            	$(this).text('Hello ' + callback.fname + ' ' + callback.lname  );
-				window.location.replace("leaflet.html");
+	$( document ).ready(function() {
+		console.log( "ready!" );
+		$.ajax({
+			type: 'POST',
+			url: 'http://127.0.0.1:5000/foodMap',
+			headers: {"Authorization":'Bearer '+''+localStorage.getItem('token')},
+			crossDomain: true,
+			dataType: 'json',
+			contentType: 'application/json; charset=utf-8',
+			success: function (response) {
+				 lat=response[0];
+				 lon=response[1];
+							},
+			error: function (xhr, status) {
+				if(xhr.status==401){
+					window.location.replace("index.html");
 				}
-                        },
-                        error: function() {
-                            $(this).html("error!");
-                        }*/
-                    });
+			}
+			/* success: function(callback) {
+     if(callback.lat!=""||callback.lon!=""){
+         //myfunction();
+
+
+                 // Watch out for Cross Site Scripting security issues when setting dynamic content!
+                     $(this).text('Hello ' + callback.fname + ' ' + callback.lname  );
+     window.location.replace("leaflet.html");
+     }
+             },
+             error: function() {
+                 $(this).html("error!");
+             }*/
+		});
+
+
 });
 
-                })(jQuery);
+})(jQuery);
 
 </script>
 
