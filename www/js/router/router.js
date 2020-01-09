@@ -50,10 +50,6 @@ function goToSelectPortionPage(item) {
 }
 
 
-$(document).ready(function () {
-    console.log('check auth...');
-    checkAuth();
-});
 
 
 

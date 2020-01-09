@@ -114,12 +114,12 @@
 
                     window.location.replace("home1.html");
                     // Watch out for Cross Site Scripting security issues when setting dynamic content!
-                    $(this).text('Hello ' + callback.token + ' ' + callback.token);
-                    if (callback.cid == 1) {
-                    }
-                    else {
-                        window.location.replace("home2.html");
-                    }
+                    // $(this).text('Hello ' + callback.token + ' ' + callback.token);
+                    // if (callback.cid == 1) {
+                    // }
+                    // else {
+                    //     window.location.replace("home2.html");
+                    // }
                 }
             },
             error: function () {

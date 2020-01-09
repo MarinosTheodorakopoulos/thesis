@@ -2,31 +2,37 @@
 
 
 
-
+// var elementData = null;
 
 
 
 
 function buildFoodShowList(data) {
+    // console.log('hhshshsshhs');
 
-    var i = 0;
+    var html_text = '';
+
     data.forEach(element => {
 
-        var item = [element[7],
-        element[8],
-        element[9],
-        element[10]
-        ];
+        var item = {};
 
+        item = {
+            _lon: element[7],
+            _lat: element[8],
+            _fid: element[10],
+            _address: element[9]
+        };
 
-        var html_text =
+        // console.log(item);
 
-            "<div class=\"row\" style=\"height: 2px;\"></div>" +
+        // });
+        html_text += "<div class=\"row\" style=\"height: 2px;\"></div>" +
             "    <div class=\"d-lg-flex\" style=\"padding: 5;padding-top: 5;padding-bottom: 5;background-color: #d7d7d7;\">" +
             "        <div class=\"container flex-nowrap\" id=\"history_list_div\">" +
             "            <div " +
-            "onclick=\"goToSelectPortionPage(" + item + ")\"" +
-            "class=\"row text-nowrap text-left d-flex flex-row justify-content-center align-items-center flex-nowrap justify-content-sm-start\"" +
+            // " id= \"food_" + element[10] + "\"" +
+            " onclick=\" buildPortionForm(" + item._lon + "," + item._lat + ",'" + item._address + "'," + item._fid + ")\"" +
+            "    class=\"row text-nowrap text-left d-flex flex-row justify-content-center align-items-center flex-nowrap justify-content-sm-start\"" +
             "                style=\"margin: 0 0;\">" +
             "                <div class=\"col-md-12\">" +
             "                    <div class=\"row\">" +
@@ -47,10 +53,10 @@ function buildFoodShowList(data) {
             "    </div>";
 
 
-        $("#foodList").append(html_text);
+
 
     });
-
+    $("#foodList").html(html_text);
 }
 
 
