@@ -20,34 +20,19 @@
 
 <body
     class="d-lg-flex justify-content-start align-items-start align-content-start flex-nowrap align-items-sm-start justify-content-lg-start"
-    id="page-history">
-    <div class="d-lg-flex">
-        <div class="container flex-nowrap" id="history_list_div">
-            <div onclick="loadVoteScreen()"
-                class="row text-nowrap text-left d-flex flex-row justify-content-center align-items-center flex-nowrap justify-content-sm-start">
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-12"><span>Μαρίνος Θεοδωρακόπουλος</span></div>
-                    </div>
-                    <div
-                        class="row text-nowrap text-left d-flex flex-row justify-content-start align-items-start flex-nowrap justify-content-sm-start">
-                        <div class="col-md-3 d-inline"><span>09/09/2019</span></div>
-                        <div class="col-md-3 d-inline"><span>2 μερίδες</span></div>
-                    </div>
-                </div>
-                <div class="col-md-12 text-center d-flex justify-content-center align-items-center"><span
-                        class="badge badge-primary"><i class="icon ion-ios-arrow-right"></i></span></div>
-            </div>
-        </div>
-    </div>
+    id="page-history" onload="loadHistory()">
+
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/history_list_query.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script src="assets/js/new-age.js"></script>
     <script src="assets/js/stars_vote.js"></script>
-
+    <script src="js/builders/show-food-list-builder.js"></script>
+    <script src="js/builders/portion-form-builder.js"></script>
+    <script src="js/http-handlers/query-handler.js"></script>
     <script src="js/router/router.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 

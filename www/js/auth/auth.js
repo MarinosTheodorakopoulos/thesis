@@ -6,6 +6,7 @@ $(document).ready(function () {
 
 function logout() {
     localStorage.clear();
+    // window.location.replace("home2.html");
 }
 
 

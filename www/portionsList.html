@@ -16,15 +16,20 @@
     <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="assets/css/Article-List.css">
     <link rel="stylesheet" href="assets/css/star_votes.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
     <script src="js/router/router.js"></script>
     <script src="js/http-handlers/query-handler.js"></script>
+
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
     <script src="js/builders/show-food-list-builder.js"></script>
     <script src="js/builders/portion-form-builder.js"></script>
+    <script src="js/map/map-leaflet.js"></script>
+    <link rel="stylesheet" href="css/map-leaflet.css" />
 </head>
 
 <body
     class="d-lg-flex justify-content-start align-items-start align-content-start flex-nowrap align-items-sm-start justify-content-lg-start"
-    id="page-top-portionList" onload="getPortionsList()">
+    id="page-top-portionList" onload="getPortionsList();">
     <div id="foodList"></div>
     <div id="portionFormSelector"></div>
     <div class="row" style="height: 2px;"></div>

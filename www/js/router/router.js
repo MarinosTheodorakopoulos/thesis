@@ -35,9 +35,12 @@ function goToPage(page, usertype) {
     // document.getElementById("transaction").innerHTML = loadTransaction();
 }
 
-function loadVoteScreen() {
-    $('#page-history').html('<iframe id="hist-frame" style="height:100%; width:100%;" class="inner-iframe"></iframe>');
+var k_trid;
+function loadVoteScreen(trid) {
+
+    $('#page-history').html('<iframe id="hist-frame" style="height:100%; width:100%;" class="inner-iframe" onload="getUrlValue()"></iframe>');
     document.getElementById('hist-frame').src = 'transaction.html';
+    window.trid = trid;
 }
 
 

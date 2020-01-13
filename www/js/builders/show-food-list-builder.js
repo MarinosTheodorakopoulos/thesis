@@ -22,8 +22,8 @@ function buildFoodShowList(data) {
             _fid: element[10],
             _address: element[9]
         };
-
-        // console.log(item);
+        console.log('this function here');
+        console.log(element);
 
         // });
         html_text += "<div class=\"row\" style=\"height: 2px;\"></div>" +
@@ -31,7 +31,7 @@ function buildFoodShowList(data) {
             "        <div class=\"container flex-nowrap\" id=\"history_list_div\">" +
             "            <div " +
             // " id= \"food_" + element[10] + "\"" +
-            " onclick=\" buildPortionForm(" + item._lon + "," + item._lat + ",'" + item._address + "'," + item._fid + ")\"" +
+            " onclick=\" buildPortionForm(" + item._lon + "," + item._lat + ",'" + item._address + "'," + item._fid + "," + element[12] + ")\"" +
             "    class=\"row text-nowrap text-left d-flex flex-row justify-content-center align-items-center flex-nowrap justify-content-sm-start\"" +
             "                style=\"margin: 0 0;\">" +
             "                <div class=\"col-md-12\">" +
@@ -57,8 +57,55 @@ function buildFoodShowList(data) {
 
     });
     $("#foodList").html(html_text);
+
 }
 
+
+
+
+
+function buildHistoryList(data) {
+
+
+
+    var text = '';
+    console.log(data);
+
+    data.forEach(element => {
+
+
+        console.log(element);
+
+
+        text += "<div class=\"d-lg - flex\">" +
+            "<div class=\"container flex-nowrap\" id = \"history_list_div\" >" +
+            // "<input id=\"t" + trid + "\" value=\"element[2]\" hidden></input>" +
+            "<div onclick=\"loadVoteScreen(" + element[2] + ")\"" +
+            "class=\"row text-nowrap text-left d-flex flex-row justify-content-center align-items-center flex-nowrap justify-content-sm-start\">" +
+            "<div class=\"col-md-12\">" +
+            "<div class=\"row\">" +
+            "<div class=\"col-md-12\"><span>" + element[6] + " " + element[7] + "-\>" + element[0] + " " + element[1] + "</span></div>" +
+            "</div>" +
+            "<div" +
+            "class=\"row text-nowrap text-left d-flex flex-row justify-content-start align-items-start flex-nowrap justify-content-sm-start\">" +
+            "<div class=\"col-md-3 d-inline\"><span>" + element[3] + "</span></div>" +
+            "<div class=\"col-md-3 d-inline\"><span>"
+            + element[5] + " μερίδες</span></div>" +
+            "</div>" +
+            "</div>" +
+            "<div class=\"col-md-12 text-center d-flex justify-content-center align-items-center\"><span" +
+            "class=\"badge badge-primary\"><i class=\"icon ion-ios-arrow-right\"></i></span></div>" +
+            "</div>" +
+            "</div>" +
+            "</div>";
+
+    });
+    $("#page-history").html(text);
+
+
+
+
+}
 
 
 

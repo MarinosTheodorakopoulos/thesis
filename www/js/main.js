@@ -1,3 +1,7 @@
+
+var param_trid = null;
+
+
 (function ($) {
     "use strict";
 
@@ -133,3 +137,17 @@ function myfunction() {
     x.className = "show";
     setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
 }
+
+
+
+
+function starVote(num) {
+    document.getElementById('star-field').value = num;
+}
+
+
+// function getUrlValue(trid) {
+
+//     window.getElementById('')
+
+// }
